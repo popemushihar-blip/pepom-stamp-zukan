@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ぺぽむのスタンプ図鑑</title>
 <style>
-:root{--bg:#fffdf7;--hero:#faeab9;--card:#fffaf0;--blue:#8ccdf0;--blue-soft:#e8f6ff;--ink:#8b7f73;--line:#e9dfc9;--white:#fff}
+:root{--bg:#fffdf7;--hero:#faeab9;--card:#ffffff;--blue:#8ccdf0;--blue-soft:#f7f7f5;--ink:#8b7f73;--line:#e9dfc9;--white:#fff}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;padding:18px 16px 42px;max-width:1240px;margin-inline:auto}
 .site-header{margin:0 0 22px;text-align:center}
@@ -66,7 +66,7 @@ function render(){
  const gs=["すべて",...new Set(base.flatMap(w=>w.genres))];
  if(!gs.includes(genre))genre="すべて";
  chips($("types"),types,type,v=>type=v);chips($("genres"),gs,genre,v=>genre=v);
- const list=base.filter(w=>(genre==="すべて"||w.genres.includes(genre))&&(!k||(w.name+w.genres.join("")+w.type).toLowerCase().includes(k)));
+ const list=base.filter(w=>(genre==="すべて"||w.genres.includes(genre))&&(!k||(w.name+w.genres.join("")+w.type+(w.search_terms||[]).join(" ")).toLowerCase().includes(k)));
  $("count").textContent=list.length+"件 / 全"+W.length+"件";
  const g=$("grid");g.innerHTML="";list.forEach(w=>g.appendChild(card(w)));
  if(!list.length)g.textContent="該当する作品がありません。条件を変えてみてください。"}
