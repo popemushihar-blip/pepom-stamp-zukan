@@ -54,7 +54,7 @@ function card(w){
  const c=document.createElement("div");c.className="card";
  const box=document.createElement("div");box.className="img";
  const ph=()=>{box.textContent="画像未確認"};
- if(w.image){const im=new Image();im.alt=w.name;im.loading="lazy";im.onerror=ph;box.appendChild(im);im.src=w.image}else ph();
+ if(w.image){const im=new Image();im.alt=w.name;im.loading="lazy";im.onerror=()=>{if(!im.dataset.fallback&&w.type==="絵文字"&&w.image.includes("/sticonshop/")&&w.image.includes("/iPhone/main.png")){im.dataset.fallback="1";im.src=w.image.replace("/iPhone/main.png","/LINEStorePC/main.png")}else{ph()}};box.appendChild(im);im.src=w.image}else ph();
  const n=document.createElement("div");n.className="name";n.textContent=w.name;
  const m=document.createElement("div");m.className="meta";m.textContent=w.type+"｜"+w.genres.join("・");
  const a=document.createElement("a");a.className="buy";a.href=w.url;a.target="_blank";a.rel="noopener";a.textContent="LINE STOREで見る";
