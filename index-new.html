@@ -3,7 +3,7 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ぺぽむのスタンプ図鑑</title>
 <style>
-:root{--bg:#fffdf7;--hero:#faeab9;--card:#ffffff;--blue:#8ccdf0;--blue-soft:#f7f7f5;--ink:#8b7f73;--line:#e9dfc9;--white:#fff}
+:root{--bg:#fffdf7;--hero:#faeab9;--card:#fff8df;--blue:#8ccdf0;--blue-soft:#f5f5f2;--ink:#8b7f73;--line:#e9dfc9;--white:#fff}
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Maru Gothic ProN","Yu Gothic",sans-serif;padding:18px 16px 42px;max-width:1240px;margin-inline:auto}
 .site-header{margin:0 0 22px;text-align:center}
@@ -53,8 +53,8 @@ function chips(el,list,cur,set){el.innerHTML="";list.forEach(v=>{const b=documen
 function card(w){
  const c=document.createElement("div");c.className="card";
  const box=document.createElement("div");box.className="img";
- const ph=()=>{box.textContent="画像未確認"};
- if(w.image){const im=new Image();im.alt=w.name;im.loading="lazy";im.onerror=()=>{if(!im.dataset.fallback&&w.type==="絵文字"&&w.image.includes("/sticonshop/")&&w.image.includes("/iPhone/main.png")){im.dataset.fallback="1";im.src=w.image.replace("/iPhone/main.png","/LINEStorePC/main.png")}else{ph()}};box.appendChild(im);im.src=w.image}else ph();
+ const ph=()=>{box.textContent="画像を読み込めません"};
+ if(w.image){const im=new Image();im.alt=w.name;im.loading="lazy";im.onerror=()=>{const src=im.src;if(!im.dataset.fallback){im.dataset.fallback="1";if(src.includes("/LINEStorePC/main.png")){im.src=src.replace("/LINEStorePC/main.png","/iPhone/main.png")}else if(src.includes("/iPhone/main.png")){im.src=src.replace("/iPhone/main.png","/LINEStorePC/main.png")}else{ph()}}else{ph()}};box.appendChild(im);im.src=w.image}else ph();
  const n=document.createElement("div");n.className="name";n.textContent=w.name;
  const m=document.createElement("div");m.className="meta";m.textContent=w.type+"｜"+w.genres.join("・");
  const a=document.createElement("a");a.className="buy";a.href=w.url;a.target="_blank";a.rel="noopener";a.textContent="LINE STOREで見る";
