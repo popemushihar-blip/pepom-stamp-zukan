@@ -1,118 +1,59 @@
 <!DOCTYPE html>
-<html lang="ja">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="theme-color" content="#f8f1ec">
-<meta name="description" content="ぺぽむが作ったLINEスタンプ・絵文字の図鑑。動物、ダジャレ、水彩、ぷるかわ絵文字などを検索できます。">
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>ぺぽむのスタンプ図鑑</title>
 <style>
-:root{--bg:#fbf7f3;--paper:#fffdfa;--ink:#4a403d;--muted:#887a74;--pink:#d998a4;--pink-dark:#b76f7d;--rose:#f5e2e3;--sand:#e9d9cb;--sage:#dfe6dc;--line:#eadfd8;--shadow:0 8px 24px rgba(100,75,65,.07)}
-*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(circle at 92% 2%,#f7e9e7 0,transparent 26rem),var(--bg);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Hiragino Kaku Gothic ProN","Yu Gothic",Meiryo,sans-serif;line-height:1.65}
-a{color:inherit}.wrap{width:min(1080px,100% - 32px);margin:auto}.topbar{display:flex;justify-content:space-between;align-items:center;padding:22px 0 16px;gap:14px}.brand{display:flex;align-items:center;gap:10px;font-weight:800;letter-spacing:.03em}.paw{display:grid;place-items:center;width:42px;height:42px;border-radius:15px;background:#f0d8d7;font-size:23px}.top-link{font-size:13px;font-weight:700;text-decoration:none;color:var(--pink-dark);border:1px solid #e9cdd0;background:#fff9f8;padding:9px 13px;border-radius:999px;white-space:nowrap}.hero{padding:34px clamp(20px,5vw,58px) 30px;border-radius:30px;background:linear-gradient(135deg,#f4e0e0,#f9f0e8 62%,#e8eee4);border:1px solid rgba(255,255,255,.8);position:relative;overflow:hidden}.hero:after{content:"✿";position:absolute;right:5%;top:-30px;font-size:140px;color:rgba(183,111,125,.12);transform:rotate(12deg)}.eyebrow{display:inline-block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;font-weight:800;color:var(--pink-dark);background:rgba(255,255,255,.68);padding:5px 11px;border-radius:999px}.hero h1{font-size:clamp(28px,5vw,44px);line-height:1.25;letter-spacing:.015em;margin:15px 0 11px;position:relative;z-index:1}.hero p{margin:0;max-width:620px;color:#74645f;font-size:15px;position:relative;z-index:1}.hero-bottom{display:flex;gap:10px;flex-wrap:wrap;margin-top:24px;position:relative;z-index:1}.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;text-decoration:none;border:none;cursor:pointer;padding:12px 17px;border-radius:15px;font-weight:800;font-size:13px;transition:transform .15s,box-shadow .15s}.btn:hover{transform:translateY(-1px);box-shadow:0 6px 16px #a07e7420}.btn-primary{background:#b87583;color:white}.btn-light{background:#fffaf8;color:#795c5d;border:1px solid #e9d7d4}.intro-note{font-size:12px;color:#7e706a;margin:15px 2px 0}.section-head{display:flex;justify-content:space-between;align-items:end;gap:12px;margin:34px 2px 15px}.section-head h2{font-size:22px;margin:0;letter-spacing:.02em}.section-head p{margin:4px 0 0;font-size:12px;color:var(--muted)}.count{background:#fff;border:1px solid var(--line);padding:7px 11px;border-radius:999px;color:#8f6870;font-size:12px;font-weight:800;white-space:nowrap}.filters{background:rgba(255,253,250,.88);border:1px solid var(--line);border-radius:22px;padding:16px;box-shadow:var(--shadow)}.search-wrap{position:relative}.search-wrap .glass{position:absolute;left:15px;top:50%;transform:translateY(-50%);font-size:19px;color:#a38c86}.search-wrap input{width:100%;border:1px solid #e5d7d0;background:#fff;border-radius:15px;padding:14px 15px 14px 45px;font-size:15px;color:var(--ink);outline:none}.search-wrap input:focus{border-color:#ce91a0;box-shadow:0 0 0 3px #f3dfe3}.control-row{display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;align-items:center;margin-top:13px}.tabs,.tags{display:flex;gap:7px;flex-wrap:wrap}.tab,.tag{font:inherit;border:1px solid #eadbd6;border-radius:999px;background:#fffaf8;color:#806c66;cursor:pointer;padding:8px 13px;font-size:12px;font-weight:800}.tab[aria-pressed="true"]{background:#b87583;color:white;border-color:#b87583}.tag[aria-pressed="true"]{background:#e3e9df;border-color:#cbd7c7;color:#52694e}.results-label{font-size:12px;color:var(--muted);margin:20px 3px 12px}.grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}.card{background:var(--paper);border:1px solid var(--line);border-radius:21px;overflow:hidden;box-shadow:0 4px 16px rgba(100,75,65,.045);display:flex;flex-direction:column;min-width:0;transition:transform .18s,box-shadow .18s}.card:hover{transform:translateY(-3px);box-shadow:var(--shadow)}.thumb{height:170px;background:linear-gradient(145deg,#f4e5e2,#f7f0e7);display:grid;place-items:center;position:relative;overflow:hidden}.thumb:before,.thumb:after{content:"";position:absolute;border-radius:50%;background:#fff8f6a0;width:130px;height:130px;left:-35px;bottom:-60px}.thumb:after{width:90px;height:90px;left:auto;bottom:auto;right:-14px;top:-25px;background:#e7ece2b0}.thumb img{display:block;width:100%;height:100%;object-fit:contain;padding:10px;position:relative;z-index:1}.thumb .fallback{z-index:0;position:absolute;font-size:42px;opacity:.65}.type-badge{position:absolute;z-index:2;left:12px;top:12px;background:#fffdfbdf;border:1px solid #ffffffa8;padding:4px 9px;font-size:10px;border-radius:999px;font-weight:800;color:#957078}.card-body{padding:14px 15px 15px;display:flex;flex-direction:column;flex:1}.series{font-size:10px;letter-spacing:.05em;color:#ae7a81;font-weight:800;margin-bottom:5px}.card h3{font-size:15px;line-height:1.45;margin:0 0 6px;overflow-wrap:anywhere}.subtitle{font-size:11px;color:#a0918a;line-height:1.4;margin-bottom:9px}.description{font-size:12px;color:#796b65;margin:0 0 12px;line-height:1.6}.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:auto;margin-bottom:14px}.chip{font-size:10px;padding:3px 8px;border-radius:999px;background:#f4eee9;color:#897770}.card .btn{width:100%;padding:10px 12px;border-radius:12px}.emoji-card .thumb{background:linear-gradient(145deg,#f7e1eb,#f4e8dc)}.empty{display:none;text-align:center;background:#fffdfa;border:1px dashed #dfc9c4;padding:34px 18px;border-radius:20px;color:var(--muted)}.empty strong{display:block;color:var(--ink);font-size:16px;margin-bottom:6px}.more{margin-top:24px;padding:23px;border-radius:23px;background:#e8ede5;border:1px solid #d5dfd0;text-align:center}.more h2{margin:0 0 7px;font-size:19px}.more p{margin:0 auto 16px;max-width:620px;font-size:13px;color:#697568}.footer{padding:30px 0 38px;text-align:center;color:#95867f;font-size:11px}.footer a{color:#a76f79}.footnote{margin:12px auto 0;max-width:680px;font-size:10px;line-height:1.7;color:#9a8c85}.to-top{display:inline-block;margin-top:13px;text-decoration:none;color:#ab7880}.hidden{display:none!important}
-@media(max-width:760px){.grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.thumb{height:145px}.card-body{padding:12px}.card h3{font-size:14px}.hero{padding:28px 22px 25px;border-radius:24px}.hero p{font-size:14px}.topbar{padding-top:15px}.section-head h2{font-size:20px}}
-@media(max-width:400px){.wrap{width:calc(100% - 22px)}.grid{gap:8px}.thumb{height:120px}.card-body{padding:10px}.card h3{font-size:13px}.subtitle{font-size:10px}.chip{font-size:9px}.btn{font-size:12px}.filters{padding:12px}.tab{padding:8px 10px}}
-</style>
-</head>
-<body>
-<div class="wrap" id="top">
-  <header class="topbar">
-    <div class="brand"><span class="paw">🐾</span><span>ぺぽむのスタンプ図鑑</span></div>
-    <a class="top-link" href="https://line.me/S/shop/sticker/author/919743" target="_blank" rel="noopener">LINE STORE ↗</a>
-  </header>
-  <section class="hero">
-    <span class="eyebrow">PEPOM'S STICKER BOOK</span>
-    <h1>お気に入りを、<br>見つけにいこう。🌷</h1>
-    <p>ぺぽむが作ったLINEスタンプと絵文字を集めた図鑑です。<br>気分やキーワードから、ぴったりの作品を探してみてね。</p>
-    <div class="hero-bottom">
-      <a class="btn btn-primary" href="#works">📚 作品を探す</a>
-      <a class="btn btn-light" href="https://line.me/S/shop/sticker/author/919743" target="_blank" rel="noopener">🛍️ LINE STOREで全作品を見る ↗</a>
-    </div>
-    <div class="intro-note">淡い色合いと、ゆるっとかわいい作品を中心に紹介しています。</div>
-  </section>
-
-  <section id="works">
-    <div class="section-head">
-      <div><h2>作品一覧</h2><p>キーワード・種類・シリーズで絞り込めます</p></div>
-      <span id="count" class="count">作品を読み込み中…</span>
-    </div>
-    <div class="filters">
-      <label class="search-wrap"><span class="glass" aria-hidden="true">⌕</span><input id="search" type="search" placeholder="例：ねこ、敬語、秋、ダジャレ…" autocomplete="off" aria-label="作品を検索"></label>
-      <div class="control-row">
-        <div class="tabs" role="group" aria-label="作品の種類">
-          <button class="tab" data-type="all" aria-pressed="true">全部</button>
-          <button class="tab" data-type="stamp" aria-pressed="false">スタンプ</button>
-          <button class="tab" data-type="emoji" aria-pressed="false">絵文字</button>
-        </div>
-        <div class="tags" role="group" aria-label="ジャンル">
-          <button class="tag" data-series="all" aria-pressed="true">すべてのシリーズ</button>
-          <button class="tag" data-series="ねこ" aria-pressed="false">🐱 ねこ</button>
-          <button class="tag" data-series="どうぶつ" aria-pressed="false">🐻 どうぶつ</button>
-          <button class="tag" data-series="ダジャレ" aria-pressed="false">😆 ダジャレ</button>
-          <button class="tag" data-series="水彩ものがたり" aria-pressed="false">🍂 水彩ものがたり</button>
-          <button class="tag" data-series="お仕事" aria-pressed="false">💻 お仕事</button>
-        </div>
-      </div>
-    </div>
-    <p class="results-label" id="result-label" aria-live="polite"></p>
-    <div class="grid" id="grid"></div>
-    <div class="empty" id="empty"><strong>ぴったりの作品が見つからなかったよ…</strong>キーワードを変えるか、シリーズを「すべて」に戻してみてね。</div>
-  </section>
-
-  <section class="more">
-    <h2>ほかの作品も見てみる？🐾</h2>
-    <p>この図鑑には、確認できた作品から順番に登録しています。最新の販売状況や、ここにまだ載っていない作品は公式LINE STOREで確認できます。</p>
-    <a class="btn btn-primary" href="https://line.me/S/shop/sticker/author/919743" target="_blank" rel="noopener">ぺぽむのLINE STOREへ ↗</a>
-  </section>
-  <footer class="footer">
-    <div>© ぺぽむ · <a href="https://note.com/pepom_ai" target="_blank" rel="noopener">note</a> · <a href="https://line.me/S/shop/sticker/author/919743" target="_blank" rel="noopener">LINE STORE</a></div>
-    <div class="footnote">作品名・販売ページはLINE STOREの掲載情報をもとに登録しています。画像が表示されない場合も、作品名からLINE STOREのページを開けます。販売・公開状況は変わることがあります。</div>
-    <a class="to-top" href="#top" onclick="window.scrollTo({top:0,behavior:'smooth'});return false;">↑ ページの上へ</a>
-  </footer>
-</div>
+:root{--bg:#f6efe6;--card:#fffaf4;--pink:#c9929b;--pink2:#e9d2d3;--ink:#5a4a47;--line:#e4d6c8}
+@media(prefers-color-scheme:dark){:root{--bg:#2b2523;--card:#383130;--pink:#d9a3ac;--pink2:#4a3a3d;--ink:#f1e6df;--line:#51453f}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Maru Gothic ProN","Zen Maru Gothic",sans-serif;padding:16px 14px 40px;max-width:760px;margin-inline:auto}
+h1{font-size:22px;margin:4px 0 2px}.sub{font-size:13px;opacity:.75;margin:0 0 14px}
+input[type=search]{width:100%;padding:11px 14px;border-radius:22px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-size:16px}
+.row{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px}
+button.chip{flex:none;border:1.5px solid var(--line);background:var(--card);color:var(--ink);padding:7px 13px;border-radius:18px;font-size:14px;font-family:inherit}
+button.chip[aria-pressed=true]{background:var(--pink);border-color:var(--pink);color:#fff}
+#count{font-size:13px;margin:12px 2px}
+#grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:600px){#grid{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px;display:flex;flex-direction:column;gap:8px}
+.img{aspect-ratio:1;border-radius:12px;background:var(--pink2);display:flex;align-items:center;justify-content:center;text-align:center;font-size:12px;padding:8px;overflow:hidden}
+.img img{width:100%;height:100%;object-fit:contain}
+.name{font-size:13px;line-height:1.4;font-weight:700;word-break:break-word}
+.meta{font-size:11px;opacity:.75}
+a.buy{margin-top:auto;text-align:center;background:var(--pink);color:#fff;text-decoration:none;padding:8px;border-radius:12px;font-size:13px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+</style></head><body>
+<h1>ぺぽむのスタンプ図鑑</h1>
+<p class="sub">LINEスタンプ・LINE絵文字の作品一覧</p>
+<input type="search" id="q" placeholder="作品名やジャンルで検索" aria-label="検索">
+<div class="row" id="types"></div>
+<div class="row" id="genres"></div>
+<div id="count"></div>
+<div id="grid"></div>
 <script>
-const products = [{"title": "ぶさかわ猫♡エキゾチック〖文字なし〗", "subtitle": "Ugly-Cute Cat · No Text", "type": "stamp", "series": "ねこ", "tags": ["猫", "ねこ", "エキゾチック", "文字なし", "猫好き", "シンプル", "cat", "no text"], "url": "https://line.me/S/sticker/ppmshr_20260620094846", "img": "", "rank": "人気のスタンプ"}, {"title": "ゆるふわ無気力ぱんだ〖やる気なし〗", "subtitle": "Soft & Lazy Panda", "type": "stamp", "series": "どうぶつ", "tags": ["パンダ", "無気力", "ゆるい", "癒し", "休憩", "日常", "panda", "lazy", "tired"], "url": "https://store.line.me/stickershop/product/36316063/ja", "id": "36316063", "rank": "人気のスタンプ"}, {"title": "ふんわりどうぶつダジャレ", "subtitle": "Fluffy Animal Puns", "type": "stamp", "series": "ダジャレ", "tags": ["動物", "ダジャレ", "だじゃれ", "ゆるかわ", "おもしろ", "animal", "pun", "funny"], "url": "https://store.line.me/stickershop/product/36418486/ja", "id": "36418486", "rank": "人気のスタンプ"}, {"title": "ぷるかわ絵文字｜Sweet & Love", "subtitle": "Puru Kawa Emojis | Sweet & Love", "type": "emoji", "series": "ぷるかわ絵文字", "tags": ["ぷるかわ", "ピンク", "かわいい", "3D", "ラブ", "ハート", "sweet", "love", "pastel"], "url": "https://store.line.me/emojishop/product/6a9f6f39c01e1c1d37721b9c/ja", "id": "6a9f6f39c01e1c1d37721b9c", "rank": "人気の絵文字"}, {"title": "食べ物ダジャレ目玉絵文字", "subtitle": "Cute Food Pun Emoji", "type": "emoji", "series": "食べ物ダジャレ", "tags": ["食べ物", "ダジャレ", "目玉", "ごはん", "おもしろ", "food", "pun", "funny"], "url": "https://store.line.me/emojishop/product/6a9a7f2087b4df6902ef21e5/ja", "id": "6a9a7f2087b4df6902ef21e5", "rank": "人気の絵文字"}, {"title": "ふんわり淡色ねこ♡やさしい絵文字", "subtitle": "Soft Pastel Cats | Cute Emoji", "type": "emoji", "series": "ねこ", "tags": ["猫", "ねこ", "淡色", "水彩", "やさしい", "ふんわり", "cat", "pastel", "watercolor"], "url": "https://store.line.me/emojishop/product/6aa0cea187b4df6902ef2dbb/ja", "id": "6aa0cea187b4df6902ef2dbb", "rank": "人気の絵文字"}, {"title": "Cute Food Pun Sticker", "subtitle": "Cute Food Pun Sticker", "type": "stamp", "series": "ダジャレ", "tags": ["食べ物", "ダジャレ", "だじゃれ", "食べもの", "おもしろ", "food", "pun", "funny"], "url": "https://store.line.me/stickershop/product/36274672/ja", "id": "36274672"}, {"title": "Everyday Animal Puns - Storybook Animals", "subtitle": "Everyday Animal Puns · Storybook Animals", "type": "stamp", "series": "ダジャレ", "tags": ["動物", "ダジャレ", "絵本", "ものがたり", "かわいい", "animal", "pun", "storybook"], "url": "https://store.line.me/stickershop/product/36099178/ja", "id": "36099178"}, {"title": "Everyday Animal Puns - Fluffy Friends", "subtitle": "Everyday Animal Puns · Fluffy Friends", "type": "stamp", "series": "ダジャレ", "tags": ["動物", "ダジャレ", "ふわふわ", "日常", "かわいい", "animal", "pun", "fluffy"], "url": "https://store.line.me/stickershop/product/36098762/ja", "id": "36098762"}, {"title": "Fluffy Light Blue Bunny [No Text]", "subtitle": "Fluffy Light Blue Bunny · No Text", "type": "stamp", "series": "うさぎ", "tags": ["うさぎ", "水色", "文字なし", "ふわふわ", "ゆるかわ", "bunny", "rabbit", "no text"], "url": "https://store.line.me/stickershop/product/36099244/ja", "id": "36099244"}, {"title": "Fluffy Lazy Bunny Everyday Life", "subtitle": "Fluffy Lazy Bunny Everyday Life", "type": "stamp", "series": "うさぎ", "tags": ["うさぎ", "無気力", "日常", "ふわふわ", "癒し", "bunny", "lazy", "everyday"], "url": "https://store.line.me/stickershop/product/35990375/ja", "id": "35990375"}, {"title": "Kind & Caring Cat : Polite Stickers", "subtitle": "Kind & Caring Cat · Polite Stickers", "type": "stamp", "series": "ねこ", "tags": ["猫", "ねこ", "丁寧語", "敬語", "あいさつ", "ありがとう", "やさしい", "cat", "polite"], "url": "https://store.line.me/stickershop/product/36261293/ja", "id": "36261293"}, {"title": "Nyan Stamp: Work Edition", "subtitle": "Nyan Stamp · Work Edition", "type": "stamp", "series": "お仕事", "tags": ["猫", "仕事", "職場", "敬語", "ビジネス", "返信", "cat", "work", "office"], "url": "https://store.line.me/stickershop/product/35949872/ja", "id": "35949872"}, {"title": "Cute Little Kitten Doll-Style : Daily", "subtitle": "Cute Little Kitten Doll-Style · Daily", "type": "stamp", "series": "ねこ", "tags": ["猫", "子猫", "ぬいぐるみ", "かわいい", "日常", "cat", "kitten", "plush"], "url": "https://store.line.me/stickershop/product/36326337/ja", "id": "36326337"}, {"title": "Soft & Gentle Animal Stickers", "subtitle": "Soft & Gentle Animal Stickers", "type": "stamp", "series": "どうぶつ", "tags": ["動物", "敬語", "あいさつ", "ありがとう", "やさしい", "うさぎ", "くま", "animal", "gentle"], "url": "https://store.line.me/stickershop/product/36288721/ja", "id": "36288721"}, {"title": "Realistic Cute Animal Bread : Everyday", "subtitle": "Realistic Cute Animal Bread · Everyday", "type": "stamp", "series": "食べもの", "tags": ["動物パン", "パン", "食べ物", "リアルかわいい", "日常", "animal bread", "food", "everyday"], "url": "https://store.line.me/stickershop/product/36062439/ja", "id": "36062439"}, {"title": "Watercolor Animal Days : Dogs", "subtitle": "Watercolor Animal Days · Dogs", "type": "stamp", "series": "水彩ものがたり", "tags": ["犬", "いぬ", "水彩", "絵本", "手描き", "癒し", "dog", "watercolor", "storybook"], "url": "https://store.line.me/stickershop/product/36122350/ja", "id": "36122350"}, {"title": "Watercolor Animal Days: Autumn", "subtitle": "Watercolor Animal Days · Autumn", "type": "stamp", "series": "水彩ものがたり", "tags": ["秋", "水彩", "動物", "絵本", "紅葉", "ハリネズミ", "リス", "autumn", "watercolor"], "url": "https://store.line.me/stickershop/product/36199888/ja", "id": "36199888"}, {"title": "Simple Speech Bubbles [Brown]", "subtitle": "Simple Speech Bubbles · Brown", "type": "stamp", "series": "吹き出し", "tags": ["吹き出し", "セリフ", "文字", "ブラウン", "シンプル", "会話", "speech bubble", "brown"], "url": "https://store.line.me/stickershop/product/36400285/ja", "id": "36400285"}, {"title": "pepom_20260831202541", "subtitle": "LINE Sticker Maker作品", "type": "stamp", "series": "そのほか", "tags": ["ぺぽむ", "pepom", "LINE Sticker Maker"], "url": "https://store.line.me/stickershop/product/36275317/ja", "id": "36275317"}, {"title": "pepom_20260831202859", "subtitle": "LINE Sticker Maker作品", "type": "stamp", "series": "そのほか", "tags": ["ぺぽむ", "pepom", "LINE Sticker Maker"], "url": "https://store.line.me/stickershop/product/36261336/ja", "id": "36261336"}];
-const grid = document.getElementById('grid');
-const search = document.getElementById('search');
-const count = document.getElementById('count');
-const resultLabel = document.getElementById('result-label');
-const empty = document.getElementById('empty');
-let activeType = 'all';
-let activeSeries = 'all';
-const fallbackEmojis = {stamp:'🐾',emoji:'✨'};
-function normalize(s){return String(s||'').toLocaleLowerCase('ja').replace(/[！-～]/g,c=>String.fromCharCode(c.charCodeAt(0)-0xFEE0)).replace(/\s+/g,' ')}
-function makeCard(p){
- const card=document.createElement('article'); card.className='card'+(p.type==='emoji'?' emoji-card':'');
- const thumb=document.createElement('div');thumb.className='thumb';
- const fallback=document.createElement('div');fallback.className='fallback';fallback.textContent=fallbackEmojis[p.type];thumb.appendChild(fallback);
- if(p.id){const img=document.createElement('img');img.alt=p.title+'の作品画像';img.loading='lazy';img.src='https://stickershop.line-scdn.net/stickershop/v1/product/'+p.id+'/LINEStorePC/main.png';img.onerror=()=>{img.remove();};thumb.appendChild(img);}
- const badge=document.createElement('span');badge.className='type-badge';badge.textContent=p.type==='emoji'?'絵文字':'スタンプ';thumb.appendChild(badge);
- const body=document.createElement('div');body.className='card-body';
- const series=document.createElement('div');series.className='series';series.textContent='✿ '+p.series;
- const title=document.createElement('h3');title.textContent=p.title;
- const subtitle=document.createElement('div');subtitle.className='subtitle';subtitle.textContent=p.subtitle||'';
- const desc=document.createElement('p');desc.className='description';desc.textContent=p.rank==='人気のスタンプ'?'人気のスタンプとして紹介された作品です。':p.rank==='人気の絵文字'?'人気の絵文字として紹介された作品です。':(p.type==='emoji'?'トークにかわいさを添える絵文字。':'トークで使えるLINEスタンプ。');
- const chips=document.createElement('div');chips.className='chips';p.tags.slice(0,3).forEach(t=>{const s=document.createElement('span');s.className='chip';s.textContent='#'+t;chips.appendChild(s)});
- const link=document.createElement('a');link.className='btn btn-light';link.href=p.url;link.target='_blank';link.rel='noopener';link.textContent='LINE STOREで見る ↗';
- body.append(series,title,subtitle,desc,chips,link);card.append(thumb,body);return card;
-}
+let W=[],type="すべて",genre="すべて";
+const $=id=>document.getElementById(id);
+function chips(el,list,cur,set){el.innerHTML="";list.forEach(v=>{const b=document.createElement("button");b.className="chip";b.textContent=v;b.setAttribute("aria-pressed",v===cur);b.onclick=()=>{set(v);render()};el.appendChild(b)})}
+function card(w){
+ const c=document.createElement("div");c.className="card";
+ const box=document.createElement("div");box.className="img";
+ const ph=()=>{box.textContent="画像未確認"};
+ if(w.image){const im=new Image();im.alt=w.name;im.loading="lazy";im.onerror=ph;box.appendChild(im);im.src=w.image}else ph();
+ const n=document.createElement("div");n.className="name";n.textContent=w.name;
+ const m=document.createElement("div");m.className="meta";m.textContent=w.type+"｜"+w.genres.join("・");
+ const a=document.createElement("a");a.className="buy";a.href=w.url;a.target="_blank";a.rel="noopener";a.textContent="LINE STOREで見る";
+ c.append(box,n,m,a);return c}
 function render(){
- const q=normalize(search.value.trim());
- const shown=products.filter(p=>{
-  const typeOk=activeType==='all'||p.type===activeType;
-  const seriesOk=activeSeries==='all'||p.series===activeSeries;
-  const hay=normalize([p.title,p.subtitle,p.series,...p.tags].join(' '));
-  return typeOk&&seriesOk&&(!q||hay.includes(q));
- });
- grid.replaceChildren(...shown.map(makeCard));
- count.textContent=shown.length+' / '+products.length+'作品';
- resultLabel.textContent=q||activeType!=='all'||activeSeries!=='all'?'検索結果：'+shown.length+'作品':'掲載中の作品 '+shown.length+'件';
- empty.style.display=shown.length?'none':'block';
-}
-document.querySelectorAll('[data-type]').forEach(b=>b.addEventListener('click',()=>{activeType=b.dataset.type;document.querySelectorAll('[data-type]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render()}));
-document.querySelectorAll('[data-series]').forEach(b=>b.addEventListener('click',()=>{activeSeries=b.dataset.series;document.querySelectorAll('[data-series]').forEach(x=>x.setAttribute('aria-pressed',String(x===b)));render()}));
-search.addEventListener('input',render);
-render();
-</script>
-</body>
-</html>
+ const k=$("q").value.trim().toLowerCase();
+ const types=["すべて",...new Set(W.map(w=>w.type))];
+ const base=W.filter(w=>type==="すべて"||w.type===type);
+ const gs=["すべて",...new Set(base.flatMap(w=>w.genres))];
+ if(!gs.includes(genre))genre="すべて";
+ chips($("types"),types,type,v=>type=v);chips($("genres"),gs,genre,v=>genre=v);
+ const list=base.filter(w=>(genre==="すべて"||w.genres.includes(genre))&&(!k||(w.name+w.genres.join("")+w.type).toLowerCase().includes(k)));
+ $("count").textContent=list.length+"件 / 全"+W.length+"件";
+ const g=$("grid");g.innerHTML="";list.forEach(w=>g.appendChild(card(w)));
+ if(!list.length)g.textContent="該当する作品がありません。条件を変えてみてください。"}
+$("q").addEventListener("input",render);
+fetch("works.json").then(r=>r.json()).then(d=>{W=d;render()}).catch(()=>{$("grid").textContent="作品データ(works.json)を読み込めませんでした。index.htmlと同じ場所に置いてください。"});
+</script></body></html>
