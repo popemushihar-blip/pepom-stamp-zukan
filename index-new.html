@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="ja"><head><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ぺぽむのスタンプ図鑑（検索テスト）</title>
+<style>
+:root{--bg:#f6efe6;--card:#fffaf4;--pink:#c9929b;--pink2:#e9d2d3;--ink:#5a4a47;--line:#e4d6c8}
+@media(prefers-color-scheme:dark){:root{--bg:#2b2523;--card:#383130;--pink:#d9a3ac;--pink2:#4a3a3d;--ink:#f1e6df;--line:#51453f}}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Maru Gothic ProN","Zen Maru Gothic",sans-serif;padding:16px 14px 40px;max-width:760px;margin-inline:auto}
+h1{font-size:22px;margin:4px 0 2px}.sub{font-size:13px;opacity:.75;margin:0 0 14px}
+input[type=search]{width:100%;padding:11px 14px;border-radius:22px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-size:16px}
+.row{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px}
+button.chip{flex:none;border:1.5px solid var(--line);background:var(--card);color:var(--ink);padding:7px 13px;border-radius:18px;font-size:14px;font-family:inherit}
+button.chip[aria-pressed=true]{background:var(--pink);border-color:var(--pink);color:#fff}
+#count{font-size:13px;margin:12px 2px}
+#grid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
+@media(min-width:600px){#grid{grid-template-columns:repeat(3,1fr)}}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:10px;display:flex;flex-direction:column;gap:8px}
+.img{aspect-ratio:1;border-radius:12px;background:var(--pink2);display:flex;align-items:center;justify-content:center;text-align:center;font-size:12px;padding:8px;overflow:hidden}
+.img img{width:100%;height:100%;object-fit:contain}
+.name{font-size:13px;line-height:1.4;font-weight:700;word-break:break-word}
+.meta{font-size:11px;opacity:.75}
+a.buy{margin-top:auto;text-align:center;background:var(--pink);color:#fff;text-decoration:none;padding:8px;border-radius:12px;font-size:13px}
+a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
+</style></head><body>
+<h1>ぺぽむのスタンプ図鑑</h1>
+<p class="sub">LINEスタンプ・LINE絵文字の作品一覧</p>
+<input type="search" id="q" placeholder="作品名・ジャンル・説明文・スタンプの文字で検索" aria-label="検索">
+<div class="row" id="types"></div>
+<div class="row" id="genres"></div>
+<div id="count"></div>
+<div id="grid"></div>
+<script>
+let W=[],S={},type="すべて",genre="すべて";
+const $=id=>document.getElementById(id);
+function chips(el,list,cur,set){el.innerHTML="";list.forEach(v=>{const b=document.createElement("button");b.className="chip";b.textContent=v;b.setAttribute("aria-pressed",v===cur);b.onclick=()=>{set(v);render()};el.appendChild(b)})}
+function card(w){
+ const c=document.createElement("div");c.className="card";
+ const box=document.createElement("div");box.className="img";
+ const ph=()=>{box.textContent="画像未確認"};
+ if(w.image){const im=new Image();im.alt=w.name;im.loading="lazy";im.onerror=ph;box.appendChild(im);im.src=w.image}else ph();
+ const n=document.createElement("div");n.className="name";n.textContent=w.name;
+ const m=document.createElement("div");m.className="meta";m.textContent=w.type+"｜"+w.genres.join("・");
+ const a=document.createElement("a");a.className="buy";a.href=w.url;a.target="_blank";a.rel="noopener";a.textContent="LINE STOREで見る";
+ c.append(box,n,m,a);return c}
+function render(){
+ const k=$("q").value.trim().toLowerCase();
+ const types=["すべて",...new Set(W.map(w=>w.type))];
+ const base=W.filter(w=>type==="すべて"||w.type===type);
+ const gs=["すべて",...new Set(base.flatMap(w=>w.genres))];
+ if(!gs.includes(genre))genre="すべて";
+ chips($("types"),types,type,v=>type=v);chips($("genres"),gs,genre,v=>genre=v);
+ const list=base.filter(w=>{const extra=S[String(w.id)]||{};const searchable=[w.name,...(w.genres||[]),w.type,extra.title,extra.description,extra.ocr,extra.keywords].filter(Boolean).join(" ").toLowerCase();return (genre==="すべて"||(w.genres||[]).includes(genre))&&(!k||searchable.includes(k));});
+ $("count").textContent=list.length+"件 / 全"+W.length+"件";
+ const g=$("grid");g.innerHTML="";list.forEach(w=>g.appendChild(card(w)));
+ if(!list.length)g.textContent="該当する作品がありません。条件を変えてみてください。"}
+$("q").addEventListener("input",render);
+Promise.all([fetch("works.json").then(r=>{if(!r.ok)throw new Error("works");return r.json()}),fetch("search-index.json").then(r=>r.ok?r.json():{}).catch(()=>({}))]).then(([d,s])=>{W=d;S=s||{};render()}).catch(()=>{$("grid").textContent="作品データ(works.json)を読み込めませんでした。index.htmlと同じ場所に置いてください。"});
+</script></body></html>
