@@ -8,8 +8,10 @@
 *{box-sizing:border-box}
 body{margin:0;background:var(--bg);color:var(--ink);font-family:"Hiragino Maru Gothic ProN","Zen Maru Gothic",sans-serif;padding:16px 14px 40px;max-width:760px;margin-inline:auto}
 h1{font-size:22px;margin:4px 0 2px}.sub{font-size:13px;opacity:.75;margin:0 0 14px}
+.hero{display:block;width:100%;height:auto;border-radius:14px;margin:0 auto 14px}
+.hero-fallback{display:none}
 input[type=search]{width:100%;padding:11px 14px;border-radius:22px;border:1.5px solid var(--line);background:var(--card);color:var(--ink);font-size:16px}
-.row{display:flex;gap:8px;overflow-x:auto;padding:10px 0 2px}
+.row{display:flex;flex-wrap:wrap;gap:8px;overflow-x:visible;padding:10px 0 2px;min-width:0}
 button.chip{flex:none;border:1.5px solid var(--line);background:var(--card);color:var(--ink);padding:7px 13px;border-radius:18px;font-size:14px;font-family:inherit}
 button.chip[aria-pressed=true]{background:var(--pink);border-color:var(--pink);color:#fff}
 #count{font-size:13px;margin:12px 2px}
@@ -23,8 +25,10 @@ button.chip[aria-pressed=true]{background:var(--pink);border-color:var(--pink);c
 a.buy{margin-top:auto;text-align:center;background:var(--pink);color:#fff;text-decoration:none;padding:8px;border-radius:12px;font-size:13px}
 a:focus-visible,button:focus-visible,input:focus-visible{outline:3px solid var(--pink);outline-offset:2px}
 </style></head><body>
-<h1>ぺぽむのスタンプ図鑑</h1>
-<p class="sub">LINEスタンプ・LINE絵文字の作品一覧</p>
+<header>
+<img class="hero" src="main-design.png.PNG" alt="PEPOM’S スタンプ図鑑" onerror="this.style.display='none';document.getElementById('heroFallback').style.display='block'">
+<div id="heroFallback" class="hero-fallback"><h1>ぺぽむのスタンプ図鑑</h1><p class="sub">LINEスタンプ・LINE絵文字の作品一覧</p></div>
+</header>
 <input type="search" id="q" placeholder="作品名やジャンルで検索" aria-label="検索">
 <div class="row" id="types"></div>
 <div class="row" id="genres"></div>
